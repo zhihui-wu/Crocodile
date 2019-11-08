@@ -1,4 +1,7 @@
-package com.wzh.crocodile;
+package com.wzh.crocodile.ex01server;
+
+import com.wzh.crocodile.ex01server.HttpServer;
+import com.wzh.crocodile.ex01server.Request;
 
 import java.io.*;
 
@@ -39,9 +42,6 @@ public class Response {
     public void sendStaticResource() {
         byte[] bytes = new byte[BUFFER_SIZE];
         FileInputStream fis = null;
-        if (request.getUri() == null){
-
-        }
         try {
             // 打开文件
             File file = new File(HttpServer.WEB_ROOT, request.getUri());

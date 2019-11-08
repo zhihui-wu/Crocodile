@@ -1,6 +1,5 @@
-package com.wzh.crocodile;
+package com.wzh.crocodile.ex02servlet;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -14,12 +13,6 @@ import java.net.Socket;
  * @Date: 2019/11/7 14:06
  */
 public class HttpServer {
-
-    /**
-     * 服务器用于存放静态资源的路径，如：html
-     * 该目录在当前工程目录下
-     */
-    public static final String WEB_ROOT = System.getProperty("user.dir") + File.separator + "webroot";
 
     /**
      * 命令：关闭服务器
@@ -61,7 +54,15 @@ public class HttpServer {
                 // 创建response对象，并响应
                 Response response = new Response(output);
                 response.setRequest(request);
-                response.sendStaticResource();
+
+                // 检查请求静态文件，还是请求servlet类
+                if (request.getUri().startsWith("/servlet/")) {
+                    ServletProcessor servletProcessor = new ServletProcessor();
+                    servletProcessor.process(request, response);
+                }else {
+                    StaticResourceProcessor staticResourceProcessor = new StaticResourceProcessor();
+                    staticResourceProcessor.process(request, response);
+                }
 
                 // 关闭套接字
                 socket.close();

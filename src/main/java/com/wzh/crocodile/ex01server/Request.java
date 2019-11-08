@@ -1,4 +1,4 @@
-package com.wzh.crocodile;
+package com.wzh.crocodile.ex01server;
 
 import java.io.IOException;
 import java.io.InputStream;
