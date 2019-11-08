@@ -39,6 +39,9 @@ public class ResponseFacade implements ServletResponse {
 
     @Override
     public PrintWriter getWriter() throws IOException {
+        if (response instanceof Response){
+            return ((Response)response).getWriter();
+        }
         return null;
     }
 
