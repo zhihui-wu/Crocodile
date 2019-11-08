@@ -2,13 +2,14 @@
 
 从零编写一个仿Tomcat服务器，参考书籍《深入剖析Tomcat》
 
-## *功能清单*
+## 功能清单
 
 + 学习代码
 
     - （ex00socket）   Socket尝试
     - （ex01server）   简单的web服务器
-    - （ex01servlet）   简单的servlet容器   
+    - （ex02servlet）   简单的servlet容器   
+    - （ex0201facade）   添加外观类  
     -  &nbsp;&nbsp;未完待续...
     -
     
