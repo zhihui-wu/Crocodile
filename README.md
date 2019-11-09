@@ -6,18 +6,18 @@
 
 + 学习代码
 
-    - （ex00_socket）   Socket尝试
-    - （ex01_server）   简单的web服务器
-    - （ex02_servlet）   简单的servlet容器   
-    - （ex02_01_facade）   添加外观类
-    - （ex03_connector）   连接器
-    -  &nbsp;&nbsp;未完待续...
+    - ex00_ready ------------------   基础知识准备
+    - ex01_server ------------------   简单的web服务器
+    - ex02_servlet ------------------简单的servlet容器   
+    - ex02_01_facade -------------添加外观类
+    - ex03_connector --------------连接器
+    -  未完待续...
     -
     
     
 + Crocodile
 
-    -  &nbsp;&nbsp;未完待续...
+    - 未完待续...
     -
 
 ## Git Commit Message规范：

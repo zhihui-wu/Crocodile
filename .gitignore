@@ -1,5 +1,4 @@
 .idea
-webroot/
 target/
 src/test/
 *.iml
