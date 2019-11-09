@@ -1,31 +1,68 @@
-package com.wzh.crocodile.ex0201facade;
+package com.wzh.crocodile.ex02_01_facade;
 
 import javax.servlet.*;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
 import java.util.Locale;
 import java.util.Map;
 
 /**
- * @Description: 请求外观类
+ * @Description: Http请求
  * @Author: 吴智慧
- * @Date: 2019/11/8 17:09
+ * @Date: 2019/11/8 13:15
  */
-public class RequestFacade implements ServletRequest {
+public class Request implements ServletRequest {
 
-    /**
-     * 持有私有request对象
-     */
-    private ServletRequest request = null;
+    private InputStream input;
 
-    public RequestFacade(Request request){
-        this.request = request;
+    private String uri = "/index.html";
+
+    public Request(InputStream input){
+        this.input = input;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    private String parseUri(String requestString){
+        int startIndex= requestString.indexOf(' ');
+        if (startIndex != -1){
+            int endIndex = requestString.indexOf(' ', startIndex + 1);
+            if (endIndex > startIndex){
+                return requestString.substring(startIndex + 1, endIndex);
+            }
+        }
+        return null;
+    }
+
+    public void parse(){
+        // 将输入流中的请求信息，转换为String
+        StringBuffer request = new StringBuffer(2048);
+        int i = 0;
+        byte[] buffer = new byte[2048];
+        try {
+            i = input.read(buffer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (int j = 0; j < i; j++){
+            request.append((char)buffer[j]);
+        }
+        System.out.println(request.toString());
+
+        // 解析uri
+        String tempUri = parseUri(request.toString());
+        if (tempUri != null){
+            uri = tempUri;
+        }
     }
 
     @Override
-    public Object getAttribute(String name) {
+    public Object getAttribute(String s) {
         return null;
     }
 
@@ -40,7 +77,7 @@ public class RequestFacade implements ServletRequest {
     }
 
     @Override
-    public void setCharacterEncoding(String env) throws UnsupportedEncodingException {
+    public void setCharacterEncoding(String s) throws UnsupportedEncodingException {
 
     }
 
@@ -65,7 +102,7 @@ public class RequestFacade implements ServletRequest {
     }
 
     @Override
-    public String getParameter(String name) {
+    public String getParameter(String s) {
         return null;
     }
 
@@ -75,7 +112,7 @@ public class RequestFacade implements ServletRequest {
     }
 
     @Override
-    public String[] getParameterValues(String name) {
+    public String[] getParameterValues(String s) {
         return new String[0];
     }
 
@@ -120,12 +157,12 @@ public class RequestFacade implements ServletRequest {
     }
 
     @Override
-    public void setAttribute(String name, Object o) {
+    public void setAttribute(String s, Object o) {
 
     }
 
     @Override
-    public void removeAttribute(String name) {
+    public void removeAttribute(String s) {
 
     }
 
@@ -145,12 +182,12 @@ public class RequestFacade implements ServletRequest {
     }
 
     @Override
-    public RequestDispatcher getRequestDispatcher(String path) {
+    public RequestDispatcher getRequestDispatcher(String s) {
         return null;
     }
 
     @Override
-    public String getRealPath(String path) {
+    public String getRealPath(String s) {
         return null;
     }
 

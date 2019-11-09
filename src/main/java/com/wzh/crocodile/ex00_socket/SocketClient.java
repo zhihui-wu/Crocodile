@@ -1,4 +1,4 @@
-package com.wzh.crocodile.ex00socket;
+package com.wzh.crocodile.ex00_socket;
 
 import java.io.*;
 import java.net.Socket;

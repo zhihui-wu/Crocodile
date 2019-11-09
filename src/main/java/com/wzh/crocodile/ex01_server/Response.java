@@ -1,7 +1,4 @@
-package com.wzh.crocodile.ex01server;
-
-import com.wzh.crocodile.ex01server.HttpServer;
-import com.wzh.crocodile.ex01server.Request;
+package com.wzh.crocodile.ex01_server;
 
 import java.io.*;
 

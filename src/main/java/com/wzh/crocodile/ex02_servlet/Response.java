@@ -1,4 +1,4 @@
-package com.wzh.crocodile.ex0201facade;
+package com.wzh.crocodile.ex02_servlet;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.ServletResponse;
