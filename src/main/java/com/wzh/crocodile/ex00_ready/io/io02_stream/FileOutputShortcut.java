@@ -27,6 +27,7 @@ public class FileOutputShortcut {
         BufferedReader in = new BufferedReader(new StringReader(content));
         // 使用文件名，创建Writer对象
         // 此处使用了快捷方式，不必都去执行所有的装饰工作
+        // 其他常见的写入任务都没有快捷方式，因此典型的I/O仍然包含大量的冗余文本
         PrintWriter out = new PrintWriter(file);
         // 遍历输出文件内容
         int lineCount = 1;
